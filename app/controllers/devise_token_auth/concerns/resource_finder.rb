@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DeviseTokenAuth::Concerns::ResourceFinder
+module DeviseTokenAuth::ResourceFinder
   extend ActiveSupport::Concern
   include DeviseTokenAuth::Controllers::Helpers
 

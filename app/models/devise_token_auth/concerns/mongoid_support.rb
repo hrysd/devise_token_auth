@@ -1,4 +1,4 @@
-module DeviseTokenAuth::Concerns::MongoidSupport
+module DeviseTokenAuth::MongoidSupport
   extend ActiveSupport::Concern
 
   def as_json(options = {})

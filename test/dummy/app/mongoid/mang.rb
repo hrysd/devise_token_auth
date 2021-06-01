@@ -42,5 +42,5 @@ class Mang
   ## Tokens
   field :tokens, type: Hash, default: {}
 
-  include DeviseTokenAuth::Concerns::User
+  include DeviseTokenAuth::User
 end

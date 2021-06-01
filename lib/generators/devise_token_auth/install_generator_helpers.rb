@@ -14,24 +14,24 @@ module DeviseTokenAuth
 
           def include_controller_concerns
             fname = 'app/controllers/application_controller.rb'
-            line  = 'include DeviseTokenAuth::Concerns::SetUserByToken'
+            line  = 'include DeviseTokenAuth::SetUserByToken'
 
             if File.exist?(File.join(destination_root, fname))
               if parse_file_for_line(fname, line)
                 say_status('skipped', 'Concern is already included in the application controller.')
               elsif is_rails_api?
                 inject_into_file fname, after: "class ApplicationController < ActionController::API\n" do <<-'RUBY'
-        include DeviseTokenAuth::Concerns::SetUserByToken
+        include DeviseTokenAuth::SetUserByToken
                 RUBY
                 end
               else
                 inject_into_file fname, after: "class ApplicationController < ActionController::Base\n" do <<-'RUBY'
-        include DeviseTokenAuth::Concerns::SetUserByToken
+        include DeviseTokenAuth::SetUserByToken
                 RUBY
                 end
               end
             else
-              say_status('skipped', "app/controllers/application_controller.rb not found. Add 'include DeviseTokenAuth::Concerns::SetUserByToken' to any controllers that require authentication.")
+              say_status('skipped', "app/controllers/application_controller.rb not found. Add 'include DeviseTokenAuth::SetUserByToken' to any controllers that require authentication.")
             end
           end
 

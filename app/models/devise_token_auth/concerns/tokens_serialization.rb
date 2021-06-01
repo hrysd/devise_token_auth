@@ -1,4 +1,4 @@
-module DeviseTokenAuth::Concerns::TokensSerialization
+module DeviseTokenAuth::TokensSerialization
   extend self
   # Serialization hash to json
   def dump(object)

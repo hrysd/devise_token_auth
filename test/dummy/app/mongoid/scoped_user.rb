@@ -46,5 +46,5 @@ class ScopedUser
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
          :validatable, :confirmable, :omniauthable
-  include DeviseTokenAuth::Concerns::User
+  include DeviseTokenAuth::User
 end

@@ -1,4 +1,4 @@
-module DeviseTokenAuth::Concerns::ConfirmableSupport
+module DeviseTokenAuth::ConfirmableSupport
   extend ActiveSupport::Concern
 
   included do

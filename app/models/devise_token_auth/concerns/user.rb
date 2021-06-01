@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DeviseTokenAuth::Concerns::User
+module DeviseTokenAuth::User
   extend ActiveSupport::Concern
 
   def self.tokens_match?(token_hash, token)
@@ -22,15 +22,15 @@ module DeviseTokenAuth::Concerns::User
     end
 
     if const_defined?('ActiveRecord') && ancestors.include?(ActiveRecord::Base)
-      include DeviseTokenAuth::Concerns::ActiveRecordSupport
+      include DeviseTokenAuth::ActiveRecordSupport
     end
 
     if const_defined?('Mongoid') && ancestors.include?(Mongoid::Document)
-      include DeviseTokenAuth::Concerns::MongoidSupport
+      include DeviseTokenAuth::MongoidSupport
     end
 
     if DeviseTokenAuth.default_callbacks
-      include DeviseTokenAuth::Concerns::UserOmniauthCallbacks
+      include DeviseTokenAuth::UserOmniauthCallbacks
     end
 
     # get rid of dead tokens
@@ -45,7 +45,7 @@ module DeviseTokenAuth::Concerns::User
     def will_save_change_to_email?; false; end
 
     if DeviseTokenAuth.send_confirmation_email && devise_modules.include?(:confirmable)
-      include DeviseTokenAuth::Concerns::ConfirmableSupport
+      include DeviseTokenAuth::ConfirmableSupport
     end
 
     def password_required?
@@ -129,7 +129,7 @@ module DeviseTokenAuth::Concerns::User
       DateTime.strptime(expiry.to_s, '%s') > Time.zone.now &&
 
       # ensure that the token is valid
-      DeviseTokenAuth::Concerns::User.tokens_match?(token_hash, token)
+      DeviseTokenAuth::User.tokens_match?(token_hash, token)
     )
   end
 

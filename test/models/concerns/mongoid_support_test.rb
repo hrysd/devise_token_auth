@@ -3,8 +3,8 @@
 require 'test_helper'
 
 if DEVISE_TOKEN_AUTH_ORM == :mongoid
-  class DeviseTokenAuth::Concerns::MongoidSupportTest < ActiveSupport::TestCase
-    describe DeviseTokenAuth::Concerns::MongoidSupport do
+  class DeviseTokenAuth::MongoidSupportTest < ActiveSupport::TestCase
+    describe DeviseTokenAuth::MongoidSupport do
       before do
         @user = create(:user)
       end

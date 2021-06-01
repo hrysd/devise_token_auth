@@ -9,7 +9,7 @@ module DeviseTokenAuth
     def create_user_model
       fname = "app/models/#{user_class.underscore}.rb"
       if File.exist?(File.join(destination_root, fname))
-        inclusion = 'include DeviseTokenAuth::Concerns::User'
+        inclusion = 'include DeviseTokenAuth::User'
         unless parse_file_for_line(fname, inclusion)
           inject_into_file fname, before: /end\s\z/ do <<-'RUBY'
 
@@ -32,7 +32,7 @@ module DeviseTokenAuth
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  include DeviseTokenAuth::Concerns::User
+  include DeviseTokenAuth::User
 
   index({ uid: 1, provider: 1}, { name: 'uid_provider_index', unique: true, background: true })
             RUBY

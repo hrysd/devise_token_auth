@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  include DeviseTokenAuth::Concerns::User
+  include DeviseTokenAuth::User
   include FavoriteColor
 end

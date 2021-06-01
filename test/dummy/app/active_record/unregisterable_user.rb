@@ -5,5 +5,5 @@ class UnregisterableUser < ActiveRecord::Base
   devise :database_authenticatable, :recoverable,
          :validatable, :confirmable,
          :omniauthable
-  include DeviseTokenAuth::Concerns::User
+  include DeviseTokenAuth::User
 end

@@ -44,6 +44,6 @@ class User
   ## Tokens
   field :tokens, type: Hash, default: {}
 
-  include DeviseTokenAuth::Concerns::User
+  include DeviseTokenAuth::User
   include FavoriteColor
 end

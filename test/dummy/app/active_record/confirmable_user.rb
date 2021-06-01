@@ -6,6 +6,6 @@ class ConfirmableUser < ActiveRecord::Base
          :recoverable, :rememberable,
          :validatable, :confirmable
   DeviseTokenAuth.send_confirmation_email = true
-  include DeviseTokenAuth::Concerns::User
+  include DeviseTokenAuth::User
   DeviseTokenAuth.send_confirmation_email = false
 end

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module DeviseTokenAuth::Concerns::SetUserByToken
+module DeviseTokenAuth::SetUserByToken
   extend ActiveSupport::Concern
-  include DeviseTokenAuth::Concerns::ResourceFinder
+  include DeviseTokenAuth::ResourceFinder
 
   included do
     before_action :set_request_start

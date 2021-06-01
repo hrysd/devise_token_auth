@@ -20,7 +20,7 @@ module DeviseTokenAuth
 
       test 'user model is created, concern is included' do
         assert_file 'app/models/user.rb' do |model|
-          assert_match(/include DeviseTokenAuth::Concerns::User/, model)
+          assert_match(/include DeviseTokenAuth::User/, model)
         end
       end
 
@@ -100,14 +100,14 @@ module DeviseTokenAuth
 
       test 'user concern is injected into existing model' do
         assert_file 'app/models/user.rb' do |model|
-          assert_match(/include DeviseTokenAuth::Concerns::User/, model)
+          assert_match(/include DeviseTokenAuth::User/, model)
         end
       end
 
       test 'subsequent runs do not modify file' do
         run_generator
         assert_file 'app/models/user.rb' do |model|
-          matches = model.scan(/include DeviseTokenAuth::Concerns::User/m).size
+          matches = model.scan(/include DeviseTokenAuth::User/m).size
           assert_equal 1, matches
         end
       end
@@ -201,14 +201,14 @@ module DeviseTokenAuth
 
       test 'controller concern is appended to application controller' do
         assert_file 'app/controllers/application_controller.rb' do |controller|
-          assert_match(/include DeviseTokenAuth::Concerns::SetUserByToken/, controller)
+          assert_match(/include DeviseTokenAuth::SetUserByToken/, controller)
         end
       end
 
       test 'subsequent runs do not modify file' do
         run_generator
         assert_file 'app/controllers/application_controller.rb' do |controller|
-          matches = controller.scan(/include DeviseTokenAuth::Concerns::SetUserByToken/m).size
+          matches = controller.scan(/include DeviseTokenAuth::SetUserByToken/m).size
           assert_equal 1, matches
         end
       end

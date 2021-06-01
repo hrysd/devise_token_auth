@@ -43,5 +43,5 @@ class UnregisterableUser
   devise :database_authenticatable, :recoverable,
          :trackable, :validatable, :confirmable,
          :omniauthable
-  include DeviseTokenAuth::Concerns::User
+  include DeviseTokenAuth::User
 end

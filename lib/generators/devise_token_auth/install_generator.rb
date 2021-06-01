@@ -23,7 +23,7 @@ module DeviseTokenAuth
     def create_user_model
       fname = "app/models/#{user_class.underscore}.rb"
       if File.exist?(File.join(destination_root, fname))
-        inclusion = 'include DeviseTokenAuth::Concerns::User'
+        inclusion = 'include DeviseTokenAuth::User'
         unless parse_file_for_line(fname, inclusion)
 
           active_record_needle = (Rails::VERSION::MAJOR >= 5) ? 'ApplicationRecord' : 'ActiveRecord::Base'
@@ -32,7 +32,7 @@ module DeviseTokenAuth
             devise :database_authenticatable, :registerable,
                     :recoverable, :rememberable, :trackable, :validatable,
                     :confirmable, :omniauthable
-            include DeviseTokenAuth::Concerns::User
+            include DeviseTokenAuth::User
             RUBY
           end
         end
